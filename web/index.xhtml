@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="List"></h:outputText></h1>
+                <h:dataTable value="#{kullaniciCont.read}" var="k">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ID"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{k.id}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="USERNAME"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{k.username}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="PASSWORD"></h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{k.password}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">UpdateForm</f:facet>
+                        <h:commandButton  action="#{kullaniciCont.updateForm(k)}" value="UpdateForm"></h:commandButton>
+                        <br/>
+                        <h:commandButton action="#{kullaniciCont.delete(k)}" value="Delete"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+            <br/>
+            <h:form>
+                <div>
+                    <h:outputText value="Username"></h:outputText>
+                    <br/>
+                    <h:inputText value="#{kullaniciCont.kullanici.username}"></h:inputText>
+                    <br/>
+                    <h:outputText value="Password"></h:outputText> 
+                    <br/>
+                    <h:inputText value="#{kullaniciCont.kullanici.password}"></h:inputText>
+                </div>
+                <br/>
+                <h:commandButton action="#{kullaniciCont.create()}" value="Create"/>
+                <h:commandButton action="#{kullaniciCont.update()}" value="Update"/>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+
